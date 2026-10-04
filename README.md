@@ -59,7 +59,7 @@ Below is a comparison of top-tier commercial Application Delivery Controllers an
 
 ## 🛠️ Open-Source GitHub Projects
 
-The open-source application delivery ecosystem contains the world's most performant, battle-tested reverse proxies and ingress controllers. Projects below are sorted by **GitHub Star Count (descending)**.
+The open-source application delivery ecosystem contains the world's most performant, battle-tested reverse proxies and ingress controllers. Projects below are sorted by **GitHub Stars_Count (descending)**.
 
 ### 🚀 High-Performance & General Purpose Load Balancers
 
@@ -92,7 +92,7 @@ Contributions are welcome! To contribute:
 
 1. 🍴 **Fork** this repository.
 2. 📝 **Add or update** entries in `README.md` keeping descriptions factual and neutral.
-3. 🧪 Ensure links, star badges, and markdown tables format properly.
+3. 🧪 Ensure links, Stars_Badges, and markdown tables format properly.
 4. 🚀 Open a **Pull Request** with a brief summary of your changes.
 
 ---
