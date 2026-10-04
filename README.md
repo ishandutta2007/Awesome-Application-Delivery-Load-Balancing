@@ -1,3 +1,121 @@
-# Awesome-Application-Delivery-Load-Balancing
+# Awesome Application Delivery & Load Balancing ⚡
 
-Awesome-Application-Delivery-Load-BalancingCurated List of SaaS Products & Open-Source GitHub ProjectsFocused on Layer 4/7 Load Balancing, Reverse Proxy, Service Discovery & Application Delivery ControlLast updated: October 2026This repository tracks notable commercial platforms and open-source projects for Application Delivery & Load Balancing. These tools help distribute traffic across backend services, terminate TLS, provide high availability, and ensure applications remain accessible under load.Examples include Azure Application Gateway, AWS Application Load Balancer, Google Cloud Load Balancing, Cloudflare Load Balancing, F5 BIG-IP, NGINX Plus, HAProxy Enterprise, Citrix ADC, Fastly Load Balancing, and Kemp LoadMaster (the category leaders).Open-source emphasis: Application delivery and load balancing has one of the most mature open-source ecosystems in infrastructure software. HAProxy is the de facto performance leader—benchmarks show it handling 42,000 requests per second with the lowest CPU usage, outperforming Envoy, NGINX, and Traefik in head-to-head tests -5. NGINX remains the most widely deployed web server and reverse proxy, powering roughly 33% of internet-facing sites -17. Traefik leads in cloud-native environments with automatic service discovery -2. Envoy serves as the data plane for Istio, Linkerd, and most service meshes -7. Caddy provides automatic HTTPS with minimal configuration -17. This section documents these production-grade solutions.Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.Table of ContentsSaaS/Hosted PlatformsOpen-Source GitHub ProjectsHow to ContributeDisclaimerSaaS/Hosted PlatformsAzure Application GatewayMicrosoft's managed Layer 7 load balancer with WAF capabilities. Provides URL-based routing, multi-site hosting, SSL termination, autoscaling, and Web Application Firewall (WAF) integration. Native integration with Azure Kubernetes Service, App Service, and Virtual Machines.AWS Application Load BalancerAWS's managed Layer 7 load balancer for HTTP/HTTPS traffic. Provides content-based routing, host/path-based routing, WebSocket support, and native integration with ECS, EKS, and Lambda.Google Cloud Load BalancingGoogle's global load balancing service. Provides single anycast IP, cross-region failover, and integration with Cloud CDN, Cloud Armor (WAF), and GKE.Cloudflare Load BalancingGlobal load balancing with health checks and failover. Provides geographic steering, active health monitoring, and integration with Cloudflare's DDoS protection and CDN.F5 BIG-IPEnterprise-grade application delivery controller (ADC). Provides advanced traffic management, SSL offloading, application security, and global server load balancing (GSLB).NGINX PlusCommercial edition of NGINX with advanced features. Adds active health checks, session persistence, JWT authentication, and commercial support beyond open-source NGINX.HAProxy EnterpriseCommercial edition of HAProxy with enterprise features. Adds advanced WAF, real-time analytics, and 24/7 support. HAProxy was ranked #3 Best Web Hosting Software Product in G2's 2026 awards -12.Citrix ADC (NetScaler)Enterprise application delivery controller. Provides load balancing, SSL offloading, application acceleration, and application security including WAF and bot management -1.Fastly Load BalancingEdge load balancing within Fastly's CDN platform. Provides global failover, health checks, and integration with Fastly's edge compute capabilities.Kemp LoadMasterApplication delivery controller with focus on ease of use. Provides load balancing, SSL offloading, and application security with a user-friendly interface -18.Open-Source GitHub ProjectsHigh-Performance Load BalancersHAProxyThe de facto open-source performance leader for load balancing. GPL-2.0 licensed, written in C . Key features: Layer 4 (TCP/UDP) and Layer 7 (HTTP) load balancing; round-robin, least connections, weighted, and hash-based algorithms; active and passive health checks; TLS termination; Runtime API and Data Plane API for dynamic configuration changes without reloads -2. Benchmarks: 42,000 requests per second in Kubernetes ingress tests—more than 2x NGINX and Traefik—with lowest CPU usage (~50%) and zero HTTP errors -5. Real-world performance: 36% faster than NGINX under maximum load in independent testing -10. Tradeoffs: Steeper learning curve; configuration syntax is HAProxy-native, not Kubernetes-native; no built-in certificate automation -2-13. Best for: High-traffic sites, TCP/UDP load balancing, and teams wanting maximum performance and control.NGINXThe most widely deployed open-source web server and reverse proxy. BSD-2-Clause licensed . Key features: Layer 7 and Layer 4 load balancing (round-robin, least connections, hash-based); TLS termination; caching; flexible request routing -2. Market position: Powers roughly 33% of internet-facing web servers as of May 2025 -17. Performance: ~25,000 requests/second per replica with default tuning; scales horizontally cleanly -13. Tradeoffs: Advanced active health checks and richer metrics are commercial (NGINX Plus) features -2; configuration via Kubernetes annotations gets messy at scale -13. Best for: Teams already running NGINX wanting one tool for serving and balancing; web-oriented systems -8.Envoy ProxyThe modern service mesh data plane proxy. Apache-2.0 licensed, written in C++ . Key features: Advanced traffic shaping; gRPC support; deep observability; xDS API for dynamic configuration -2. Ecosystem role: Serves as the data plane for Istio, Linkerd, AWS App Mesh, Gloo, and Contour -2-7. Performance: ~18,500 requests/second in Kubernetes ingress benchmarks; ~40,000-70,000 RPS per core in raw tests -5-17. Tradeoffs: Operational complexity; verbose configuration model; higher CPU usage than HAProxy -2. Best for: Microservices, gRPC, and mesh edges -2.Cloud-Native & Container-FirstTraefikCloud-native Layer 7 load balancer with automatic service discovery. MIT licensed, written in Go . Key features: Auto-discovers services from Docker, Kubernetes, Consul, and other providers; automatic HTTPS via Let's Encrypt; clean dashboard UI; native Gateway API support (Traefik 3) -2-13. Performance: ~20,000 requests/second per replica; ~15,000-30,000 RPS per core in raw tests -13-17. Tradeoffs: Lower raw throughput than HAProxy; fewer low-level controls; some enterprise features (advanced WAF, distributed rate limiting) are Traefik Enterprise (paid) -2-13. Best for: Container-first teams, Kubernetes dev environments, and organizations prioritizing developer experience -13-17.CaddyWeb server with automatic HTTPS by default. Apache-2.0 licensed, written in Go . Key features: Automatic HTTPS via ACME (Let's Encrypt, ZeroSSL); simple Caddyfile configuration; HTTP/3 support; reverse proxy and load balancing . Performance: ~20,000-40,000 RPS per core -17. Tradeoffs: Lower raw throughput than HAProxy or NGINX; fewer enterprise features. Best for: SaaS solo/SMB with ≤50k requests/day; developers wanting auto-HTTPS with minimal configuration -17.OpenRestyProgrammable web platform built on NGINX and LuaJIT. BSD-2-Clause licensed . Key features: Extends NGINX with Lua scripting for sophisticated routing, authentication, access control, caching, and traffic management; high-performance event-driven architecture -1. Best for: Complex application-delivery policies that go beyond straightforward reverse proxying -1.Kubernetes-Specific Load BalancersMetalLBNetwork load balancer implementation for bare-metal Kubernetes clusters. Apache-2.0 licensed . Key features: Brings LoadBalancer services to bare-metal clusters using standard networking and routing protocols (ARP, BGP) -3. Best for: On-premises Kubernetes clusters needing external IP assignment.kube-vipVirtual IP and load balancer for Kubernetes clusters. Apache-2.0 licensed . Key features: Provides VIP and load balancing for control plane and services in bare-metal, edge, and hybrid environments -3. Best for: HA control planes and service load balancing without cloud provider integration.LoxiLBCloud-native load balancer built around Go and eBPF. Apache-2.0 licensed . Key features: High-performance Layer 4 load balancing for Kubernetes, edge, telco, IoT, and hybrid-cloud deployments -3. Best for: Performance-critical edge and telco workloads.BFEModern Layer 7 load balancer from Baidu. Apache-2.0 licensed, written in Go (memory-safe) . Key features: Layer 7 load balancing with extensibility; immune to buffer overflow vulnerabilities -3. Best for: Teams wanting a Go-based L7 load balancer with Chinese ecosystem support.Additional Strong Open-Source OptionsHigh-Performance: HAProxy (C, performance leader), NGINX (C, most deployed), Envoy (C++, mesh data plane) .Cloud-Native: Traefik (Go, auto-discovery), Caddy (Go, auto-HTTPS), OpenResty (Lua/NGINX, programmable) .Kubernetes: MetalLB (bare-metal LB), kube-vip (VIP for clusters), LoxiLB (eBPF L4), BFE (L7, Go) .ADC Platforms: RELIANOID ADC Load Balancer (community edition of ZEVENET, Debian 12) -14.Frameworks for building custom systems: Combine HAProxy for maximum performance and TCP/UDP load balancing, NGINX for web serving and reverse proxy, Traefik for Kubernetes auto-discovery, Envoy for service mesh data plane, and Caddy for auto-HTTPS with minimal configuration. Add MetalLB for bare-metal Kubernetes load balancing and kube-vip for control plane VIPs.How to ContributeFork the repo.Add/edit entries in README.md (follow existing format).Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.Submit PR with a short explanation.Star the repo if you find it useful!DisclaimerThis is a community-curated list — not exhaustive and not an endorsement.Load balancers handle sensitive traffic and TLS termination; ensure proper security configuration, certificate management, and compliance with organizational security policies.Open-source reality: The open-source ecosystem for application delivery and load balancing is exceptionally mature and production-proven. HAProxy is the performance leader—42,000 RPS in Kubernetes ingress tests with lowest CPU and zero errors -5, and 36% faster than NGINX under maximum load -10. NGINX powers roughly 33% of internet-facing sites -17. Traefik leads in cloud-native auto-discovery -2. Envoy serves as the data plane for most service meshes -7. Caddy provides auto-HTTPS with minimal config -17. However, commercial platforms (F5 BIG-IP, Citrix ADC, NGINX Plus, HAProxy Enterprise) provide enterprise WAF, advanced analytics, and 24/7 support that open-source alternatives require additional tooling to match. The open-source path is genuinely viable for virtually every load balancing scenario, from single-server SaaS to global enterprise deployments.Made for DevOps engineers, platform teams, SREs, and infrastructure architects.Let's make application delivery more open, performant, and reliable.
+![Awesome Application Delivery Banner](./assets/banner.svg)
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Application-Delivery-Load-Balancing/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Application-Delivery-Load-Balancing?style=flat-square" alt="Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Application-Delivery-Load-Balancing/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Application-Delivery-Load-Balancing?style=flat-square" alt="Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Application-Delivery-Load-Balancing/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ishandutta2007/Awesome-Application-Delivery-Load-Balancing?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
+
+A curated collection of production-grade **SaaS platforms** and **open-source GitHub projects** focused on **Layer 4 / Layer 7 load balancing**, **reverse proxies**, **service discovery**, **API gateways**, **eBPF ingress**, and **Application Delivery Controllers (ADC)**.
+
+---
+
+## 📚 Table of Contents
+- [🌐 Market Size & Industry Dynamics](#-market-size--industry-dynamics)
+- [☁️ SaaS & Hosted Commercial Platforms](#️-saas--hosted-commercial-platforms)
+- [🛠️ Open-Source GitHub Projects](#️-open-source-github-projects)
+  - [🚀 High-Performance & General Purpose Load Balancers](#-high-performance--general-purpose-load-balancers)
+  - [☁️ Cloud-Native & Container Ingress](#️-cloud-native--container-ingress)
+  - [☸️ Kubernetes & Bare-Metal Load Balancers](#️-kubernetes--bare-metal-load-balancers)
+  - [🛡️ Enterprise ADC Platforms](#️-enterprise-adc-platforms)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [💖 Support](#-support)
+- [⚠️ Disclaimer](#️-disclaimer)
+- [⭐ Star History](#-star-history)
+
+---
+
+## 🌐 Market Size & Industry Dynamics
+
+> [!NOTE]
+> The global **Application Delivery Controller (ADC) and Load Balancing market** is valued at approximately **$4.8 Billion USD (2025/2026)** and is projected to expand to **$9.2 Billion USD by 2032** at a CAGR of **~9.5%**. 
+> 
+> **Market Structure:** The sector is **moderately fragmented**. Top tier hyperscalers (Microsoft Azure, AWS, Google Cloud) and established cloud giants (Cloudflare, F5 Networks) control the enterprise cloud and hardware ADC segments. However, a thriving and highly competitive ecosystem of specialized cloud-native proxies and open-source solutions (HAProxy, NGINX, Envoy, Traefik, Caddy) prevents a single "winner-take-all" outcome, allowing developers and DevOps architects to choose specialized solutions for microservices, bare-metal Kubernetes, and edge networks.
+
+---
+
+## ☁️ SaaS & Hosted Commercial Platforms
+
+Below is a comparison of top-tier commercial Application Delivery Controllers and managed cloud load balancing products sorted by company size (Revenue / Valuation).
+
+| Product 🛠️ | Vendor / Company 🏢 | Market Size / Valuation 📊 | Pricing (Starting Paid Tier) 💰 | Free Tier / Trial Limits 🎁 | Primary Use Cases & Features 🌟 |
+| :--- | :--- | :--- | :--- | :--- | :--- | | **Azure Application Gateway** | Microsoft | **$3.12 Trillion (Market Cap)** | ~$0.025/hour + $0.008 per Capacity Unit (~$18/month base) | 30-day trial with $200 Azure free credits | Managed Layer 7 load balancer with Web Application Firewall (WAF), URL routing, & AKS integration. |
+| **Google Cloud Load Balancing** | Alphabet (Google) | **$2.05 Trillion (Market Cap)** | ~$0.025/hour (~$18/month for first 5 forwarding rules) + data egress | $300 credit for 90 days; free tier includes select GCE/GKE usage | Global Anycast IP load balancing, cross-region failover, Cloud CDN & Cloud Armor WAF integration. |
+| **AWS Application Load Balancer (ALB)** | Amazon (AWS) | **$1.98 Trillion (Market Cap)** | ~$0.0225/hour + $0.008 per LCU (~$16.20/month base) | 12 months free: 750 hours/month shared with ALB/NLB + 15 LCU | Cloud-native L7 load balancer for HTTP/HTTPS/gRPC, host/path routing, ECS/EKS integration. |
+| **Cloudflare Load Balancing** | Cloudflare | **$34.5 Billion (Market Cap)** | $5/month (includes 2 origin servers & 6 pool monitors) | Free tier available (DNS/CDN), Load Balancing starts at $5/mo with active health check limits | Global traffic steering, active health monitoring, geo-routing, and built-in DDoS protection. |
+| **Citrix ADC (NetScaler)** | Cloud Software Group | **$16.5 Billion (Acquisition Value)** | ~$2,500/year (VPX virtual appliance entry license) | 90-day trial license for NetScaler VPX Express (20 Mbps limited) | Enterprise ADC with high-density SSL offloading, application acceleration, and bot management. |
+| **F5 BIG-IP** | F5 Networks | **$13.2 Billion (Market Cap)** | ~$1,800/year (BIG-IP VE pay-as-you-go / subscription base) | 90-day free trial for BIG-IP Virtual Edition (VE) with evaluation key | Enterprise-grade ADC platform, high-throughput hardware/VE, GSLB, and advanced WAF protection. |
+| **Fastly Load Balancing** | Fastly | **$1.15 Billion (Market Cap)** | $50/month (Essential plan minimum platform spend) | $50 one-time credit free trial for edge compute & load balancing | Edge load balancing integrated directly with Fastly edge CDN and Compute@Edge runtime. |
+| **NGINX Plus** | F5 / NGINX | **$670 Million (F5 Acquisition)** | ~$2,500/year per instance | 30-day full-featured free trial with official NGINX support | Commercial NGINX edition adding active health checks, JWT auth, dynamic configuration, and live state APIs. |
+| **Kemp LoadMaster** | Progress Software (Kemp) | **$2.8 Billion (Progress Market Cap)** | ~$1,980 (One-time perpetual entry VLM license) | Free LoadMaster (FLM) perpetual tier capped at 20 Mbps throughput | Simple, cost-effective ADC with virtual/hardware appliances, SSL offloading, and easy GUI management. |
+| **HAProxy Enterprise** | HAProxy Technologies | **~$150 Million (Est. Valuation)** | ~$1,200/year per node (Enterprise Base Subscription) | 30-day trial of HAProxy Enterprise with all modules enabled | Commercial HAProxy distribution featuring enterprise WAF, bot defense, Real-Time Dashboard, and 24/7 SLA. |
+
+---
+
+## 🛠️ Open-Source GitHub Projects
+
+The open-source application delivery ecosystem contains the world's most performant, battle-tested reverse proxies and ingress controllers. Projects below are sorted by **GitHub Star Count (descending)**.
+
+### 🚀 High-Performance & General Purpose Load Balancers
+
+- [![Stars](https://img.shields.io/github/stars/nginx/nginx?style=social&color=white)](https://github.com/nginx/nginx/stargazers) **[NGINX](https://github.com/nginx/nginx)** (BSD-2-Clause) - The world's most widely deployed web server and L4/L7 reverse proxy. Powers ~33% of all internet websites with efficient event-driven architecture.
+- [![Stars](https://img.shields.io/github/stars/caddyserver/caddy?style=social&color=white)](https://github.com/caddyserver/caddy/stargazers) **[Caddy](https://github.com/caddyserver/caddy)** (Apache-2.0) - Modern, memory-safe web server written in Go featuring **automatic HTTPS** via Let's Encrypt/ZeroSSL, HTTP/3 support, and simple Caddyfile syntax.
+- [![Stars](https://img.shields.io/github/stars/envoyproxy/envoy?style=social&color=white)](https://github.com/envoyproxy/envoy/stargazers) **[Envoy Proxy](https://github.com/envoyproxy/envoy)** (Apache-2.0) - High-performance C++ L7 proxy and service bus designed for cloud-native architectures. Serves as the default data plane for Istio, Linkerd, and modern service meshes.
+- [![Stars](https://img.shields.io/github/stars/haproxy/haproxy?style=social&color=white)](https://github.com/haproxy/haproxy/stargazers) **[HAProxy](https://github.com/haproxy/haproxy)** (GPL-2.0) - The ultimate performance leader in open-source L4/L7 load balancing. Capable of handling over 40,000 requests/sec per core with ultra-low CPU overhead and microsecond latency.
+
+### ☁️ Cloud-Native & Container Ingress
+
+- [![Stars](https://img.shields.io/github/stars/traefik/traefik?style=social&color=white)](https://github.com/traefik/traefik/stargazers) **[Traefik](https://github.com/traefik/traefik)** (MIT) - The premier cloud-native HTTP reverse proxy and load balancer with automatic service discovery for Docker, Kubernetes, Consul, and Swarm.
+- [![Stars](https://img.shields.io/github/stars/openresty/openresty?style=social&color=white)](https://github.com/openresty/openresty/stargazers) **[OpenResty](https://github.com/openresty/openresty)** (BSD-2-Clause) - Full-fledged web platform integrating NGINX with LuaJIT to enable ultra-fast, scriptable L7 traffic management, dynamic routing, and custom security rules.
+- [![Stars](https://img.shields.io/github/stars/baidu/bfe?style=social&color=white)](https://github.com/baidu/bfe/stargazers) **[BFE (Baidu Front End)](https://github.com/baidu/bfe)** (Apache-2.0) - Modern Go-based Layer 7 load balancing platform handling context-aware routing, memory safety, and high-concurrency multi-tenant traffic routing.
+
+### ☸️ Kubernetes & Bare-Metal Load Balancers
+
+- [![Stars](https://img.shields.io/github/stars/metallb/metallb?style=social&color=white)](https://github.com/metallb/metallb/stargazers) **[MetalLB](https://github.com/metallb/metallb)** (Apache-2.0) - Bare-metal network load balancer implementation for Kubernetes clusters using standard network routing protocols (ARP, NDP, BGP).
+- [![Stars](https://img.shields.io/github/stars/kube-vip/kube-vip?style=social&color=white)](https://github.com/kube-vip/kube-vip/stargazers) **[kube-vip](https://github.com/kube-vip/kube-vip)** (Apache-2.0) - Virtual IP and Load Balancing solution for Kubernetes control planes and services in bare-metal, edge, and hybrid environments.
+- [![Stars](https://img.shields.io/github/stars/loxilb-io/loxilb?style=social&color=white)](https://github.com/loxilb-io/loxilb/stargazers) **[LoxiLB](https://github.com/loxilb-io/loxilb)** (Apache-2.0) - High-performance cloud-native Layer 4 / Layer 7 eBPF-based load balancer tailored for Kubernetes, 5G Telco, IoT, and edge workloads.
+
+### 🛡️ Enterprise ADC Platforms
+
+- [![Stars](https://img.shields.io/github/stars/relianoid/relianoid?style=social&color=white)](https://github.com/relianoid/relianoid/stargazers) **[RELIANOID Community Edition](https://github.com/relianoid/relianoid)** (AGPL-3.0) - Formerly ZEVENET, a Debian-based open-source Application Delivery Controller (ADC) for L4/L7 load balancing, high availability, and network security.
+
+---
+
+## 🤝 How to Contribute
+
+Contributions are welcome! To contribute:
+
+1. 🍴 **Fork** this repository.
+2. 📝 **Add or update** entries in `README.md` keeping descriptions factual and neutral.
+3. 🧪 Ensure links, star badges, and markdown tables format properly.
+4. 🚀 Open a **Pull Request** with a brief summary of your changes.
+
+---
+
+## 💖 Support
+
+If you found this repository helpful for your infrastructure or DevOps architecture:
+
+- ⭐ **Star this repository** to help others discover it!
+- 🔀 **Fork it** to customize it for your team's internal technical stack.
+- 📢 **Share it** with fellow developers, SREs, and network engineers.
+- 💖 Consider sponsoring the maintainer on [GitHub Sponsors](https://github.com/sponsors/ishandutta2007).
+
+Thank you for supporting open-source software! 🙌
+
+---
+
+## ⚠️ Disclaimer
+
+This list is community-curated for informational and educational purposes only and does not constitute an endorsement. Load balancers handle critical production traffic and TLS termination; always verify security configurations, cipher suites, and compliance requirements before deployment.
+
+---
+
+## ⭐ Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Application-Delivery-Load-Balancing&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Application-Delivery-Load-Balancing&type=date&legend=top-left)
